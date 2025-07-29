@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxpfp4hbv282b"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_2j0gu"]
+[ext_resource type="PackedScene" uid="uid://xykp5tiotcsr" path="res://platform.tscn" id="1_nsy1r"]
+[ext_resource type="PackedScene" uid="uid://ccyueqt5l8h01" path="res://doodle-guy.tscn" id="2_n8rdp"]
+[ext_resource type="PackedScene" uid="uid://cyik5lppm7vhv" path="res://food.tscn" id="3_dllph"]
+[ext_resource type="PackedScene" uid="uid://bqwfwae1ee7cu" path="res://hud.tscn" id="4_knpoa"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_2j0gu")
+platform_scene = ExtResource("1_nsy1r")
+food_scene = ExtResource("3_dllph")
+
+[node name="Platform" parent="." instance=ExtResource("1_nsy1r")]
+position = Vector2(516, 1126)
+
+[node name="Player" parent="." instance=ExtResource("2_n8rdp")]
+position = Vector2(537, 839)
+
+[node name="HUD" parent="." instance=ExtResource("4_knpoa")]
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(540, 601)
+
+[node name="Platform2" parent="." instance=ExtResource("1_nsy1r")]
+position = Vector2(792, 831)
+
+[node name="Platform3" parent="." instance=ExtResource("1_nsy1r")]
+position = Vector2(335, 572)
+
+[node name="Platform4" parent="." instance=ExtResource("1_nsy1r")]
+position = Vector2(766, 268)
+
+[connection signal="die" from="Player" to="." method="_on_player_die"]
+[connection signal="nutrition" from="Player" to="." method="_on_player_nutrition"]

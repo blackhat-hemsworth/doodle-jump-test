@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccyueqt5l8h01"]
+
+[ext_resource type="Texture2D" uid="uid://y8v34ia1nihk" path="res://doodle-jump-protagonist.png" id="1_m5edm"]
+[ext_resource type="Script" path="res://doodle_guy.gd" id="1_w5egv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esi82"]
+size = Vector2(62.5, 66)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_w5egv")
+
+[node name="Doodle-jump-protagonist" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(0.144531, 0.154297)
+texture = ExtResource("1_m5edm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.75, 2)
+shape = SubResource("RectangleShape2D_esi82")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.5, 1.5)
+scale = Vector2(3.15, 3.35)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

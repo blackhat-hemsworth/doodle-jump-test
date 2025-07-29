@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyik5lppm7vhv"]
+
+[ext_resource type="Script" path="res://food.gd" id="1_0swak"]
+[ext_resource type="Texture2D" uid="uid://dm6r0jyt30p5f" path="res://pretzel.png" id="1_d8a74"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2muv"]
+radius = 19.0263
+
+[node name="Food" type="Area2D" groups=["platform"]]
+collision_layer = 2
+script = ExtResource("1_0swak")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h2muv")
+
+[node name="Pretzel" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, -2)
+scale = Vector2(1.5, 1.945)
+texture = ExtResource("1_d8a74")
+
+[connection signal="body_entered" from="." to="." method="_on_food_entered"]

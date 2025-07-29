@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqwfwae1ee7cu"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_ospid"]
+
+[sub_resource type="SystemFont" id="SystemFont_hu4jv"]
+font_italic = true
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_gi4r0"]
+font = SubResource("SystemFont_hu4jv")
+font_size = 32
+font_color = Color(0.0784314, 1, 1, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_u41q7"]
+font_weight = 500
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_l76gd"]
+font = SubResource("SystemFont_u41q7")
+font_size = 40
+font_color = Color(0.845867, 0.278971, 0.203205, 1)
+outline_size = 6
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_ospid")
+
+[node name="StartLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -11.5
+offset_right = 86.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Press Any Key To Start"
+
+[node name="GameOverLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -30.0
+offset_right = 74.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "game over :-(
+Press SPACE to retry"
+label_settings = SubResource("LabelSettings_gi4r0")
+
+[node name="MessageLabel" type="Label" parent="."]
+visible = false
+offset_left = 753.0
+offset_top = 56.0
+offset_right = 1030.0
+offset_bottom = 146.0
+text = "you need food"
+label_settings = SubResource("LabelSettings_l76gd")
+
+[node name="Timer" type="Timer" parent="MessageLabel"]
+wait_time = 1.437
+
+[connection signal="timeout" from="MessageLabel/Timer" to="." method="_on_timer_timeout"]
